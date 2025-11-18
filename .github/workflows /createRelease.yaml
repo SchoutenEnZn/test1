@@ -1,0 +1,15 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (optional)'
+        required: false
+
+jobs:
+  call-create-release:
+    uses: SchoutenEnZn/.github/.github/workflow-templates/createRelease.yaml@main
+    with:
+      changelog_path: CHANGELOG.md
+      version: ${{ github.event.inputs.version }}
