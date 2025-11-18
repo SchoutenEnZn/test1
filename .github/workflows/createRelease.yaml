@@ -1,10 +1,19 @@
-name: Verify CHANGELOG
+name: Release
 
 on:
-  pull_request:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (optional)'
+        required: false
+
+permissions:
+  contents: write
 
 jobs:
-  verify-changelog:
-    uses: SchoutenEnZn/.github/.github/workflows/verify-changelog.yml@main
+  create-release:
+    uses: SchoutenEnZn/org-workflows/.github/workflows/create-release.yml@main
     with:
-      base_ref: ${{ github.base_ref }}
+      changelog_path: CHANGELOG.md
+      version: ${{ github.event.inputs.version }}
+    secrets: inherit
