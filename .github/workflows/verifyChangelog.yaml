@@ -1,14 +1,9 @@
-name: Verify CHANGELOG
+name: Changelog Check
 
 on:
   pull_request:
-
-permissions:
-  contents: read
+    types: [opened, synchronize]
 
 jobs:
   verify-changelog:
-    uses: SchoutenEnZn/.github/.github/workflows/verify-changelog.yml@main
-    with:
-      base_ref: ${{ github.base_ref }}
-    secrets: inherit
+    uses: SchoutenEnZn/.github/.github/workflows/verifyChangelog.yaml@main
