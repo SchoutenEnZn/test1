@@ -1,9 +1,10 @@
-name: Verify CHANGELOG Updated
+name: Verify CHANGELOG
 
 on:
   pull_request:
-    types: [opened, synchronize]
 
 jobs:
-  call-changelog-check:
-    uses: SchoutenEnZn/.github/.github/workflow-templates/verifyChangelog.yaml@main
+  verify-changelog:
+    uses: SchoutenEnZn/.github/.github/workflows/verify-changelog.yml@main
+    with:
+      base_ref: ${{ github.base_ref }}
