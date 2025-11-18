@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   verify-changelog:
-    uses: SchoutenEnZn/org-workflows/.github/workflows/verify-changelog.yml@main
+    uses: SchoutenEnZn/.github/.github/workflows/verify-changelog.yml@main
     with:
       base_ref: ${{ github.base_ref }}
     secrets: inherit
