@@ -1,19 +1,22 @@
-name: Release
+name: Create Release
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version number (optional)'
+        description: 'Version number (e.g., v1.0.0). Leave blank to use latest from CHANGELOG.md.'
         required: false
+  pull_request:
+    types:
+      - closed
 
 permissions:
   contents: write
 
 jobs:
   create-release:
-    uses: SchoutenEnZn/.github/.github/workflows/create-release.yml@main
+    # Only run on merged PRs or manual dispatch
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    uses: SchoutenEnZn/.github/.github/workflows/createRelease.yaml@main
     with:
-      changelog_path: CHANGELOG.md
       version: ${{ github.event.inputs.version }}
-    secrets: inherit
