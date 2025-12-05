@@ -15,8 +15,7 @@ permissions:
 
 jobs:
   create-release:
-    # Only run on merged PRs or manual dispatch
     if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
-    uses: SchoutenEnZn/.github/.github/workflows/createRelease.yaml@main
+    uses: SchoutenEnZn/.github/.github/workflows/reusable/createRelease.yaml@main
     with:
       version: ${{ github.event.inputs.version }}
