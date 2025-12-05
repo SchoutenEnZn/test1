@@ -6,4 +6,4 @@ on:
 
 jobs:
   verify-changelog:
-    uses: SchoutenEnZn/.github/.github/workflows/verifyChangelog.yaml@main
+    uses: SchoutenEnZn/.github/.github/workflows/reusable/verifyChangelog.yaml@main
